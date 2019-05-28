@@ -80,7 +80,8 @@ uint32_t Hyper_log_log::get_uniq_num() {
         estimate = -TWO32 * std::log(1 - estimate / TWO32);
     }
 
-    return round_ans(estimate);
+    last_eval = round_ans(estimate);
+    return last_eval;
 }
 
 void Hyper_log_log::clear() {

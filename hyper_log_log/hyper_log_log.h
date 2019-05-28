@@ -21,7 +21,7 @@ private:
 
     long double get_estimate();
 
-    static const uint8_t p = 16;
+    static const uint8_t p = 14;
     static const uint32_t m = (1u << p);
     constexpr static const long double alpha = 0.7213 / (1 + 1.079 / static_cast<long double>(m));
 

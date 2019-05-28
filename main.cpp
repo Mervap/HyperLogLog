@@ -7,7 +7,7 @@ void print_help() {
               << "-help — help" << std::endl << std::endl
               << "The expected performance of the arrays:" << std::endl
               << "n" << std::endl
-              << "a_1 a_2 ... a_n" << std::endl
+              << "a_1 a_2 ... a_n" << std::endl;
 }
 
 int main(int argc, char **argv) {
