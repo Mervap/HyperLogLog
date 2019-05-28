@@ -1,0 +1,8 @@
+#Idea
+.mvn/
+.gradle/
+.idea/
+obj/
+bin/
+build/
+out/
