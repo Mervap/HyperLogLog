@@ -6,26 +6,28 @@
 #include <cstdint>
 #include "murmur_hash2.h"
 
-static const uint32_t m = 0x5bd1e995;
-static const uint32_t r = 24;
-static const uint32_t seed = 42;
+static const uint64_t m = 0xc6a4a7935bd1e995ull;
+static const uint64_t r = 47;
+static const uint64_t seed = 42;
 
-uint32_t murmur_hash2(int x) {
+uint64_t murmur_hash2_64(int x) {
 
-    uint32_t len = std::to_string(x).length();
-    uint32_t h = seed ^len;
+    uint64_t len = std::to_string(x).length();
 
-    auto k = static_cast<uint32_t>(x);
+    uint64_t h = seed ^(len * m);
+
+    auto k = static_cast<uint64_t>(x);
 
     k *= m;
     k ^= k >> r;
-    k *= m * m;
-    h ^= k;
+    k *= m;
 
-    h ^= h >> 13;
+    h ^= k;
+    h *= m * m;
+
+    h ^= h >> r;
     h *= m;
-    h ^= h >> 15;
+    h ^= h >> r;
 
     return h;
 }
-

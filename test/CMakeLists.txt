@@ -12,4 +12,4 @@ add_executable(test_hyper_log_log test_hyper_log_log.cpp)
 target_link_libraries(test_hyper_log_log ${GTEST_LIBRARIES} Threads::Threads hyper_log_log)
 
 enable_testing()
-add_test(NAME TestHyperLogLOg COMMAND ./test_hyper_log_log)
+add_test(NAME TestHyperLogLog COMMAND ./test_hyper_log_log)

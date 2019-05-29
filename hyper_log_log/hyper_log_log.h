@@ -22,6 +22,7 @@ struct Hyper_log_log {
 private:
 
     long double get_estimate();
+    static long double estimate_bias(long double);
 
     static const uint8_t p = 14;
     static const uint32_t m = (1u << p);
