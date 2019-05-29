@@ -18,7 +18,7 @@ uint32_t get_id(uint64_t x, uint8_t p) {
 
 uint8_t get_zeros_cnt(uint64_t x, uint8_t st_pos) {
     uint8_t cnt = 0;
-    for (uint64_t i = 1u << st_pos; i > 0; i >>= 1u, ++cnt) {
+    for (uint64_t i = 1ull << st_pos; i > 0; i >>= 1u, ++cnt) {
         if ((x & i) > 0) {
             break;
         }

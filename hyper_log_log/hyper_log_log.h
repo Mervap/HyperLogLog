@@ -5,7 +5,11 @@
 #ifndef COUNTER_H
 #define COUNTER_H
 
-// The occupied memory is m = 2^14 bytes on buckets + still on a trifle, that is about 16 Kib
+/* The occupied memory is m = 2^14 bytes on buckets
+ * + approximately 6Kib on bias data
+ * + still on a trifle,
+ * that is about 22-23 Kib
+ */
 
 struct Hyper_log_log {
 
@@ -22,6 +26,7 @@ struct Hyper_log_log {
 private:
 
     long double get_estimate();
+
     static long double estimate_bias(long double);
 
     static const uint8_t p = 14;
