@@ -1,5 +1,5 @@
 //
-// Created by dumpling on 25.05.19.
+// Created by dumpling on 28.05.19.
 //
 
 #include <cstdio>
@@ -32,12 +32,12 @@ uint32_t round_ans(long double x) {
 }
 
 Hyper_log_log::Hyper_log_log() : zeros_buckets(0), was_eval(false), last_eval(0) {
-    this->bucket = new uint8_t[m];
+    this->buckets = new uint8_t[m];
     clear();
 }
 
 Hyper_log_log::~Hyper_log_log() {
-    delete[] bucket;
+    delete[] buckets;
 }
 
 void Hyper_log_log::add(int x) {
@@ -45,10 +45,10 @@ void Hyper_log_log::add(int x) {
     uint32_t hash = murmur_hash2(x);
     uint32_t id = get_id(hash, p);
     uint8_t zeros = get_zeros_cnt(hash, BIT_DEPTH - p - 1) + 1;
-    if (bucket[id] == 0) {
+    if (buckets[id] == 0) {
         --zeros_buckets;
     }
-    bucket[id] = std::max(bucket[id], zeros);
+    buckets[id] = std::max(buckets[id], zeros);
 }
 
 
@@ -56,7 +56,7 @@ long double Hyper_log_log::get_estimate() {
     long double sum = 0;
 
     for (int i = 0; i < m; ++i) {
-        sum += 1.0 / static_cast<long double>(1u << bucket[i]);
+        sum += 1.0 / static_cast<long double>(1u << buckets[i]);
     }
 
 
@@ -85,7 +85,7 @@ uint32_t Hyper_log_log::get_uniq_num() {
 }
 
 void Hyper_log_log::clear() {
-    memset(bucket, 0, m);
+    memset(buckets, 0, m);
     this->zeros_buckets = m;
 }
 
