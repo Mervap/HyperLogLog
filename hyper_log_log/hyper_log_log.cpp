@@ -56,7 +56,7 @@ long double Hyper_log_log::get_estimate() {
     long double sum = 0;
 
     for (int i = 0; i < m; ++i) {
-        sum += 1.0 / static_cast<long double>(1u << buckets[i]);
+        sum += 1.0 / static_cast<long double>(1ull << buckets[i]);
     }
 
 
